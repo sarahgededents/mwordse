@@ -1,5 +1,3 @@
-import numpy as np
-import wavio
 import collections
 
 MORSE_CODE = {'A': '.-',
@@ -88,13 +86,3 @@ def morse_to_text(morse, strict=False):
             else:
                 raise MorseError(f"{e} is not valid morse code")
     return ''.join(code_to_text(code) for code in morse.split())
-
-
-def something(text):
-    text = list(text)
-    rate = 44100  # samples per second
-    T = 3  # sample duration (seconds)
-    f = 440.0  # sound frequency (Hz)# Compute waveform samples
-    t = np.linspace(0, T, T * rate, endpoint=False)
-    x = np.sin(2 * np.pi * f * t)
-    wavio.write("sine.wav", x, rate, sampwidth=3)
